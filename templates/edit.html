@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="">
+
+</head>
+
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+              <a class="navbar-brand" href="{% url 'index' %}">
+                <span>
+                  BOOKSTORE
+                </span>
+              </a>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> </span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link pl-lg-0 fw-bold" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                   <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'categories' %}">Categories</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'about' %}"> About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'wishlist' %}"> Wishlist </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'cartdis' %}">Cart</a>
+                  </li>
+
+                    </ul>
+
+
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- end header section -->
+      </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <h3 class="text-center mt-1"><b>Edit Your Books Here</b></h3>
+            <div class="container-fluid mt-5">
+                <form method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                    {% for x in data_key %}
+
+                    <div class="mb-3 container-fluid" style="width: 900px;">
+                        <img src="{{x.coverimg.url}}" class="w-25 h-25"> <br>
+                        <label for="formFile" class="form-label fw-bold mt-3">Edit  Cover image below</label>
+                        <input class="form-control"  type="file" value="{{x.coverimg.url}}" name="coverimg" id="formFile"> <br>
+
+                        <label for="formFile1" class="form-label fw-bold">Edit Name of the Book</label>
+                        <input class="form-control" type="text" value="{{x.bookname}}" name="bookname" id="formFile1"> <br>
+
+                        <label for="formFile2" class="form-label fw-bold">Edit Name of the Author</label>
+                        <input class="form-control" type="text" name="authorname" value="{{x.authorname}}" id="formFile2"> <br>
+
+                        <label for="formFile4" class="form-label fw-bold">Edit  Category</label>
+                        <input class="form-control" type="text" value="{{x.categories}}" name="category" id="formFile4"> <br>
+
+                        <label for="formFile3" class="form-label fw-bold">Edit Price</label>
+                        <input class="form-control" type="number" value="{{x.price}}" name="price" id="formFile3"> <br>
+
+
+                        <input class="form-control fw-bold" type="submit" value="Update" style="width: 200px; background-color: grey;">
+
+                    </div>
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        function updateQuantity(select) {
+            document.getElementById("selected_quantity").value = select.value;
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

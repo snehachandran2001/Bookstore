@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  {% load static %}
+  <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>BOOKSTORE</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+
+
+  <style>
+    .title_text{
+       font-size:16px;
+       font-weight:bold;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              BOOKSTORE
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link pl-lg-0" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'categories' %}">Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'show_review' %}"> Reviews</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'wishlist' %}"> Wishlist </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'cartdis' %}">Cart</a>
+              </li>
+
+              <select class="border-0" id="profile" style='background-color: #063547; color:white;' onchange="navigate()">
+{% if user_data %}
+               <option value="#" class="text-white" style="display:none;">{{ user_data.user_name }}</option>
+                <option value="{% url 'logout' %}" class="text-white fw-4">Logout</option>
+                <option value="{% url 'sell' %}" class="text-white fw-4">Sell</option>
+                 <option value="{% url 'manage' %}" class="text-white fw-4">Manage</option>
+ {% else %}
+                 <option value="#" class="text-white" style="display:none;">Profile</option>
+                <option value="{% url 'login' %}" class="text-white fw-4">Login</option>
+
+                 {% endif %}
+              </select>
+
+
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                       Bookstore
+                    </h5>
+                    <h1>
+                      For All Your <br>
+                      Reading Needs
+                    </h1>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt
+                      quo quidem ad optio.
+                    </p>
+                    <a href="">
+                      Read More
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      Bostorek Bookstore
+                    </h5>
+                    <h1>
+                      For All Your <br>
+                      Reading Needs
+                    </h1>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt
+                      quo quidem ad optio.
+                    </p>
+                    <a href="">
+                      Read More
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="detail-box">
+                    <h5>
+                      Bostorek Bookstore
+                    </h5>
+                    <h1>
+                      For All Your <br>
+                      Reading Needs
+                    </h1>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt
+                      quo quidem ad optio.
+                    </p>
+                    <a href="">
+                      Read More
+                    </a>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="img-box">
+                    <img src="{% static 'images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn_box">
+          <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+
+
+
+
+
+  <!-- books starts -->
+  <div class="container">
+    <br>
+
+    <h3 class="text-center"><b>BOOKS</b></h3>
+
+    <!--  filter starts-->
+<div class="row">
+
+  <div class="col-md-12">
+    <form method="get" action="{% url 'filter_books' %}">
+      <div class="row">
+        <div class="col-md-4">
+          <select name="price_order" onchange="this.form.submit()" class="form-control">
+            <option style="display:none;">Price</option>
+            <option value="ascending">Price: Low to High</option>
+            <option value="descending">Price: High to Low</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input type="text" class="form-control" value="{{ search }}" name="search_query" placeholder="Search here...">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+    <div class="col-md-4 ms-auto d-flex justify-content-end">
+           <select name="sort_by" onchange="this.form.submit()" class="form-control">
+    <option style="display:none;">Sort by</option>
+    <option value="oldest">Oldest</option>
+    <option value="latest">Latest</option>
+</select>
+        </div>
+      </div>
+
+
+  </form>
+
+  </div>
+
+
+</div>
+
+  <!--  filter ends-->
+
+    <br>
+
+    <div class="row">
+ {% for x in data_key %}
+
+    <div class="col-md-3 mb-4">
+    <a href="/preview/{{x.id}}/" class="text-decoration-none">
+        <div class="card">
+            <img src="{{ x.coverimg.url }}" class="card-img-top" alt="Book Cover" height="350px" width="200px">
+            <div class="card-body">
+                <h6 class="card-title text-dark title_text">{{ x.bookname }}</h6>
+                <p class="card-text text-dark">Price: <span class="text-success">₹{{ x.price }}</span></p>
+
+            </div>
+        </div>
+    </a>
+</div>
+
+
+      {% endfor %}
+
+    </div>
+
+      <!-- books ends -->
+
+
+
+
+
+    <!-- about section -->
+
+    <section class="about_section layout_padding">
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="img-box">
+              <img src="{% static 'images/about-img.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>
+                  About Our Bookstore
+                </h2>
+              </div>
+              <p>
+                At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae. Consequuntur
+                obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque? Quibusdam praesentium
+                pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae excepturi, ipsam aliquid
+                deleniti assumenda culpa deserunt.
+              </p>
+              <a href="">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- client section -->
+
+    <section class="client_section layout_padding">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            What Says Customers
+          </h2>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="client_container ">
+              <div class="detail-box">
+                <p>
+                  Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
+                  many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                </p>
+                <span>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/c1.jpg' %}" alt="">
+                </div>
+                <div class="client_name">
+                  <h5>
+                    Jone Mark
+                  </h5>
+                  <h6>
+                    Student
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mx-auto">
+            <div class="client_container ">
+              <div class="detail-box">
+                <p>
+                  Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
+                  many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                </p>
+                <span>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/c2.jpg' %}" alt="">
+                </div>
+                <div class="client_name">
+                  <h5>
+                    Anna Crowe
+                  </h5>
+                  <h6>
+                    Student
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mx-auto">
+            <div class="client_container ">
+              <div class="detail-box">
+                <p>
+                  Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
+                  many web sites still in their infancy. Various versions have evolved over the years, sometimes by
+                </p>
+                <span>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="{% static 'images/c3.jpg' %}" alt="">
+                </div>
+                <div class="client_name">
+                  <h5>
+                    Hilley James
+                  </h5>
+                  <h6>
+                    Student
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end client section -->
+
+    <!-- blog section -->
+    <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 info-col">
+          <div class="info_detail">
+            <h4>
+              About Us
+            </h4>
+            <p>
+              Vitae aut explicabo fugit facere alias distinctio, exem commodi mollitia minusem dignissimos atque asperiores incidunt vel voluptate iste
+            </p>
+            <div class="info_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 info-col">
+          <div class="info_contact">
+            <h4>
+              Address
+            </h4>
+            <div class="contact_link_box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>
+                  Location
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  <a href="tel:+1234567890">Call Us</a>
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  <a href="mailto:recipient@example.com">recipient@example.com</a>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 info-col">
+          <div class="info_contact">
+            <h4>
+              Newsletter
+            </h4>
+            <form action="#">
+              <input type="text" placeholder="Enter email" />
+              <button type="submit">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 info-col">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+    <script>
+    function navigate() {
+        var select = document.getElementById("profile");
+        var url = select.options[select.selectedIndex].value;
+        if (url) {
+            window.location.href = url;
+        }
+    }
+</script>
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="[% static 'js/custom.js' %]"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="">
+
+</head>
+
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+          <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+              <a class="navbar-brand" href="{% url 'index' %}">
+                <span>
+                  BOOKSTORE
+                </span>
+              </a>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class=""> </span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link pl-lg-0 fw-bold" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                   <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'categories' %}">Categories</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'about' %}"> About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'wishlist' %}"> Wishlist </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{% url 'cartdis' %}">Cart</a>
+                  </li>
+
+                    </ul>
+
+
+              </div>
+            </nav>
+          </div>
+        </header>
+        <!-- end header section -->
+      </div>
+
+
+<!-- books starts -->
+  <div class="container">
+    <br>
+
+
+
+    <br>
+
+    <div class="row">
+{% if data_key2 %}
+        <h1 class="text-center">Books in {{ data_key2.0.categories }}</h1>
+    {% endif %}
+{% for x in data_key %}
+    <div class="col-md-3 mt-5">
+    <a href="/preview/{{x.id}}/" class="text-decoration-none">
+        <div class="card">
+            <img src="{{ x.coverimg.url }}" class="card-img-top" alt="Book Cover" height="330px" width="180px">
+            <div class="card-body">
+                <h6 class="card-title text-dark title_text">{{ x.bookname }}</h6>
+                <p class="card-text text-dark">Price: <span class="text-success">₹{{ x.price }}</span></p>
+
+            </div>
+        </div>
+    </a>
+</div>
+
+
+      {% endfor %}
+
+    </div>
+
+      <!-- books ends -->
+
+
+
+    <script>
+        function updateQuantity(select) {
+            document.getElementById("selected_quantity").value = select.value;
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

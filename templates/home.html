@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cards</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 300px;
+    max-width: 100%;
+  }
+  .card img {
+    width: 100%;
+    height: 350px;
+    display: block;
+  }
+  .card .card-content {
+    padding: 20px;
+
+  }
+</style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"><h1 class="m-0 text-primary"><span class="text-dark">BOOK</span>STORE</h1></a>
+    <form method="post" class="d-flex">
+      {% csrf_token %}
+      <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+</header>
+<div class="card-container">
+  {% for x in value %}
+  <a href="{% url 'buy' x.id %}" class="card">
+    <img src="{{ x.book_image.url }}" alt="Image 1">
+    <div class="card-content">
+      <h3>{{ x.book_name }}</h3>
+      <p>{{ x.author_name }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+
+</body>
+</html>
